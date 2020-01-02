@@ -1,0 +1,28 @@
+{
+  "name": "expo-rentals",
+  "version": "1.0.0",
+  "description": "Furniture you can rent, promptly delivered!",
+  "main": "functions/index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"No tests\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddhantvinchurkar/expo-rentals.git"
+  },
+  "keywords": [
+    "furniture",
+    "exporentals",
+    "rent",
+    "online"
+  ],
+  "author": "Siddhant Vinchurkar",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/siddhantvinchurkar/expo-rentals/issues"
+  },
+  "homepage": "https://github.com/siddhantvinchurkar/expo-rentals#readme"
+}
