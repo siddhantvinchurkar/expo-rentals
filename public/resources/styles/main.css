@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:500&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons&display=swap');
+
+html {
+  font-family: 'Ubuntu', sans-serif;
+  background-color: #FFFFFF !important;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+main {
+   flex: 1 0 auto;
+ }
+
+ .page-footer{
+   padding-top: 0px !important;
+   background-color:#FFFFFF !important;
+ }
+
+ .page-footer .footer-copyright{
+   font-size: 1.2em;
+   background-color: #F0F0F0 !important;
+   color: #000000 !important;
+ }
+
+ .page-footer .footer-copyright .container{
+   background-color: #F0F0F0 !important;
+ }
+
+ .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+nav{
+  position: fixed !important;
+  top: 0;
+  z-index: 5;
+}
+
+.parallax-container{
+  min-height: 720px !important;
+  margin-top: -1.3em !important;
+}
+
+.inlined{
+  display: inline;
+}
+
+a .active{
+  border-bottom: 5px solid #000000;
+}
+
+.card-panel{
+  padding: 10px;
+}
+
+.input-field label{
+  color: #4A4A4A;
+}
+
+.input-field label .active{
+  color: #26A69A;
+}
