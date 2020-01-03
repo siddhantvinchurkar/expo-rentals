@@ -31,7 +31,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "3d6f0de6c2da70cad82035254bcccb0f"
+    "revision": "424b4c017519857d055b272d13fc3ad0"
   },
   {
     "url": "manifest.json",
@@ -76,6 +76,10 @@ self.__precacheManifest = [
   {
     "url": "resources/images/icons/og_512.jpg",
     "revision": "5c930ace90e018de77abb189836ddea4"
+  },
+  {
+    "url": "resources/images/image_0/768x432.webp",
+    "revision": "610bc170e91b611ffc49c0d672a953ec"
   },
   {
     "url": "resources/images/image_1/1366x768.webp",
@@ -134,10 +138,6 @@ self.__precacheManifest = [
     "revision": "e554b7647439d7d3ae2d267c5bf75b35"
   },
   {
-    "url": "resources/scripts/initializer.js",
-    "revision": "b443ad2266818efbf07ce0eb2a37226f"
-  },
-  {
     "url": "resources/scripts/jquery.min.js",
     "revision": "220afd743d9e9643852e31a135a9f3ae"
   },
@@ -147,7 +147,7 @@ self.__precacheManifest = [
   },
   {
     "url": "resources/scripts/main.js",
-    "revision": "d10482dd90f9a08665711a65f8260d84"
+    "revision": "07bfa88a32e0e5814008ee9eccb52ad1"
   },
   {
     "url": "resources/scripts/materialize.min.js",

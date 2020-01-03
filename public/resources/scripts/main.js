@@ -6,6 +6,7 @@ $(document).ready(function () {
 
 	/* Prepare UI */
 
+	$('.sidenav').sidenav();
 	$('.parallax').parallax();
 	$('.modal#progressDialogModal').modal({ dismissible: false });
 
@@ -68,6 +69,24 @@ $(document).ready(function () {
 		});
 
 		$("#contact_us").click(function () {
+			$('html, body').animate({
+				scrollTop: $("#footer").offset().top - 370
+			}, 3000);
+		});
+
+		$("#sides1trigger").click(function () {
+			$('html, body').animate({
+				scrollTop: $("#s1").offset().top - 100
+			}, 3000);
+		});
+
+		$("#sides2trigger").click(function () {
+			$('html, body').animate({
+				scrollTop: $("#s2").offset().top - 100
+			}, 3000);
+		});
+
+		$("#sides3trigger").click(function () {
 			$('html, body').animate({
 				scrollTop: $("#footer").offset().top - 370
 			}, 3000);
