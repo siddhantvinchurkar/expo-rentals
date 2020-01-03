@@ -37,12 +37,210 @@
   </head>
 
   <body>
+
+    <!-- What if some browser does not support javascript or has turned it off? -->
+
+    <noscript>Unfortunately, your browser does not support javascript. Either that or it's disabled. Maybe try to enable
+      it? Privacy centric browsers like Tor or Brave tend to do this more often than you think. Don't worry. We respect
+      your privacy and will never collect data from you without your explicit consent. If you want to know for
+      sure, head over to our <a href="https://privacy.aiwcbangalore.org/" target="_blank" rel="noreferrer"
+        title="Privacy Policy" alt="https://privacy.aiwcbangalore.org/">Privacy Policy</a>.</noscript>
+
+    <!-- Navbar -->
+
+    <nav class="z-depth-5">
+      <div class="nav-wrapper"
+        style="background-color:#FFFFFF !important; background-image: linear-gradient(to right, #FFFFFF, #F9F9F9); box-shadow: none !important;">
+        <a class="brand-logo black-text">
+          <img class="lazyload responsive-img hide-on-med-and-down" data-src="resources/images/icons/favicon_192.webp"
+            style="height:3em;" alt="Unable to load image" />
+          <h3 class="hide-on-large-only" style="margin-top: 0em;">exporentals</h3>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li
+            style="background-color:#FFFFFF !important; background-image: linear-gradient(to right, #F9F9F9, #F0F0F0);">
+            <a class="roboto black-text" style="font-size: 2em;">exporentals</a>
+          </li>
+        </ul>
+        <ul class="center hide-on-med-and-down">
+          <li style="background-color:#FFFFFF !important;">
+            <a id="about_us" class="roboto black-text">What's exporentals?</a>
+          </li>
+          <li style="background-color:#FFFFFF !important;">
+            <a id="how" class="roboto black-text">How does it work?</a>
+          </li>
+          <li style="background-color:#FFFFFF !important;">
+            <a id="contact_us" class="roboto black-text">Contact Us</a>
+          </li>
+          <li style="background-color:#FFFFFF !important;">
+            <a id="sign_in" class="waves-effect waves-light btn blue darken-4 z-depth-5"><i
+                class="material-icons right">vpn_key</i><b>Sign in</b></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
     <main>
+
+      <!-- Progress Dialog Modal -->
+
+      <div id="progressDialogModal" class="modal">
+        <div class="modal-content">
+          <div class="progress">
+            <div class="indeterminate"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parallax Image 1 -->
+
+      <div class="parallax-container">
+        <div class="parallax">
+          <picture>
+            <!-- Vertical image for mobile screens (in portrait orientation) -->
+            <source media="(max-width: 600px)" data-srcset="resources/images/image_1/432x768.webp">
+            <!-- Horizontal image for tablets and 720p desktops -->
+            <source media="(max-width: 1600px)" data-srcset="resources/images/image_1/1366x768.webp">
+            <!-- Horizontal image for 1080p desktops -->
+            <img class="lazyload responsive-img" data-src="resources/images/image_1/1920x1080.webp"
+              alt="Unable to load image" />
+          </picture>
+        </div>
+      </div>
+
+      <!-- Section 1 -->
+
+      <div id="s1" class="row z-depth-5 center-align">
+        <div class="container">
+          <div class="col s12 m12 l12 xl12">
+            <h1 id="s1h1">What's exporentals?</h1>
+            <br />
+            <p id="s1p1" style="font-size: 1.5em;">Exporentals is a B2B platform that connects furniture vendors with
+              event management firms. We make it possible to rent props and furniture for events on an hourly basis.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parallax Image 2 -->
+
+      <div class="parallax-container">
+        <div class="parallax">
+          <picture>
+            <!-- Vertical image for mobile screens (in portrait orientation) -->
+            <source media="(max-width: 600px)" data-srcset="resources/images/image_2/432x768.webp">
+            <!-- Horizontal image for tablets and 720p desktops -->
+            <source media="(max-width: 1600px)" data-srcset="resources/images/image_2/1366x768.webp">
+            <!-- Horizontal image for 1080p desktops -->
+            <img class="lazyload responsive-img" data-src="resources/images/image_2/1920x1080.webp"
+              alt="Unable to load image" />
+          </picture>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+
+      <div id="s2" class="row z-depth-5 center-align">
+        <div class="container">
+          <div class="col s12 m12 l12 xl12">
+            <h1 id="s2h2">How does it work?</h1>
+            <div class="row">
+              <div class="col s4 m4 l4 xl4">
+                <h4>Step 1</h4>
+                <i class="material-icons" style="font-size: 10em; margin-top: 0.1em;">add_shopping_cart</i>
+                <h5>Pick the items you'd like to rent and add them to your cart</h5>
+              </div>
+              <div class="col s4 m4 l4 xl4">
+                <h4>Step 2</h4>
+                <i class="material-icons" style="font-size: 10em; margin-top: 0.1em;">account_balance_wallet</i>
+                <h5>Pay the security deposit</h5>
+              </div>
+              <div class="col s4 m4 l4 xl4">
+                <h4>Step 3</h4>
+                <i class="material-icons" style="font-size: 10em; margin-top: 0.1em;">local_shipping</i>
+                <h5>Items are shipped to desired location</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parallax Image 3 -->
+
+      <div class="parallax-container">
+        <div class="parallax">
+          <picture>
+            <!-- Vertical image for mobile screens (in portrait orientation) -->
+            <source media="(max-width: 600px)" data-srcset="resources/images/image_3/432x768.webp">
+            <!-- Horizontal image for tablets and 720p desktops -->
+            <source media="(max-width: 1600px)" data-srcset="resources/images/image_3/1366x768.webp">
+            <!-- Horizontal image for 1080p desktops -->
+            <img class="lazyload responsive-img" data-src="resources/images/image_3/1920x1080.webp"
+              alt="Unable to load image" />
+          </picture>
+        </div>
+      </div>
 
     </main>
 
-    <footer>
+    <!-- Footer -->
 
+    <footer id="footer" class="page-footer z-depth-5" style="background-color:#F9F9F9 !important;">
+      <div class="row">
+        <div class="col s12 m12 l6 xl6">
+          <img class="lazyload responsive-img" data-src="resources/images/exporentals-logo.webp" style="height:16.5em;"
+            alt="Unable to load image" />
+          <p class="black-text center" style="font-size:2em;"># 7, 169 <i>"E"</i>, Thaiappa Garden,
+            <br />Bilekahalli, Bengaluru,<br />Karnataka, India - 560 041</p>
+          <div class="row">
+            <div class="col s12 m12 l4 xl4 center-align">
+              <a class="valign-wrapper" href="mailto:info@exporentals.com" target="_blank" rel="noreferrer"
+                title="Send us an email" style="color:#000000; font-size: 1.2em; padding: 14px;"><i
+                  class="material-icons">email</i>&emsp;info@exporentals.com</a>
+            </div>
+            <div class="col s12 m12 l4 xl4 center-align">
+              <a class="valign-wrapper" href="tel:+918026967081" target="_blank" rel="noreferrer"
+                title="Place a call to our landline" style="color:#000000; font-size: 1.2em; padding: 14px;"><i
+                  class="material-icons">ring_volume</i>&emsp;+91
+                80 2696
+                7081</a>
+            </div>
+            <div class="col s12 m12 l4 xl4 center-align">
+              <a class="valign-wrapper" href="tel:+919900564602" target="_blank" rel="noreferrer"
+                title="Place a call to our mobile phone" style="color:#000000; font-size: 1.2em; padding: 14px;"><i
+                  class="material-icons">settings_cell</i>&emsp;+91 99005 64602</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m12 l4 xl4 offset-l1 offset-xl1 black-text">
+          <h1 id=" fh">Leave us your email address</h1>
+          <p id="fp" style="font-size: 1.5em;">And we'll keep in touch.</p>
+          <br />
+          <div class="row">
+            <div class="col s12 m12 l12 xl12 input-field">
+              <i class="material-icons prefix">mail</i>
+              <input placeholder="rahul.prakash34@gmail.com" id="email" type="email" class="validate"
+                pattern="[a-z0-9._%+-]+@+[a-z]+.+[a-z]" required>
+              <label for="email">Email *</label>
+              <span class="helper-text" data-error="Please enter a valid email address" data-success="Perfect.">We'll
+                keep this a secret.</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m12 l12 xl12">
+              <br />
+              <a id="submit" class="waves-effect waves-light btn-large blue darken-4 disabled z-depth-5"><i
+                  class="material-icons right">send</i>Submit</a>
+            </div>
+          </div>
+          <p>We respect your privacy and will not disclose your information to third parties without your explicit
+            consent.</p>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">&copy; <span id="footerYear">2020</span> <b>Exporentals India Private Limited</b>. All
+          rights
+          reserved.</div>
+      </div>
     </footer>
 
     <script type="application/javascript" src="resources/scripts/lazysizes.min.js" async></script>
