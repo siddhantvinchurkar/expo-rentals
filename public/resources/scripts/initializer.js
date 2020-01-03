@@ -39,6 +39,13 @@ $(document).ready(function () {
 		})
 	).done(function () {
 
+		/* Initialize Firebase services */
+
+		firebase.analytics();
+		firebase.auth().useDeviceLanguage();
+		var perf = firebase.performance();
+		var db = firebase.firestore();
+
 		/* Kill UI Blocker */
 
 		M.Modal.getInstance(progressDialogModal).close();
