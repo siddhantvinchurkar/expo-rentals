@@ -75,20 +75,23 @@ $(document).ready(function () {
 		});
 
 		$("#sides1trigger").click(function () {
+			M.Sidenav.getInstance(sidenav).close();
 			$('html, body').animate({
 				scrollTop: $("#s1").offset().top - 100
 			}, 3000);
 		});
 
 		$("#sides2trigger").click(function () {
+			M.Sidenav.getInstance(sidenav).close();
 			$('html, body').animate({
 				scrollTop: $("#s2").offset().top - 100
 			}, 3000);
 		});
 
 		$("#sides3trigger").click(function () {
+			M.Sidenav.getInstance(sidenav).close();
 			$('html, body').animate({
-				scrollTop: $("#footer").offset().top - 370
+				scrollTop: $("#footer").offset().top - 100
 			}, 3000);
 		});
 

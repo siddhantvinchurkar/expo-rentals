@@ -31,7 +31,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "424b4c017519857d055b272d13fc3ad0"
+    "revision": "472b59bfafc4936fdef66779807b78e8"
   },
   {
     "url": "manifest.json",
@@ -43,7 +43,7 @@ self.__precacheManifest = [
   },
   {
     "url": "resources/images/exporentals-logo.webp",
-    "revision": "26cec794cdabe640613933e128d5afdf"
+    "revision": "66d51cf8e233510a1196b31386a0ebb3"
   },
   {
     "url": "resources/images/icons/favicon_144.png",
@@ -147,7 +147,7 @@ self.__precacheManifest = [
   },
   {
     "url": "resources/scripts/main.js",
-    "revision": "07bfa88a32e0e5814008ee9eccb52ad1"
+    "revision": "0ead91bc683f1348d6a6fccd00985c59"
   },
   {
     "url": "resources/scripts/materialize.min.js",
