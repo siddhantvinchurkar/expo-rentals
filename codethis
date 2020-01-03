@@ -1,0 +1,15 @@
+#!/bin/bash
+printf "\033c"
+echo Starting IDE in 3...
+sleep 1
+printf "\033c"
+echo Starting IDE in 2...
+sleep 1
+printf "\033c"
+echo Starting IDE in 1...
+sleep 1
+printf "\033c"
+echo Happy coding!
+sleep 1
+printf "\033c"
+code . && kill -9 $PPID
