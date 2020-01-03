@@ -69,7 +69,7 @@ $(document).ready(function () {
 
 		$("#contact_us").click(function () {
 			$('html, body').animate({
-				scrollTop: $("#footer").offset().top
+				scrollTop: $("#footer").offset().top - 370
 			}, 3000);
 		});
 
