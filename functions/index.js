@@ -16,7 +16,7 @@ exports.addEmail = functions.https.onRequest((request, response) => {
 				docId = doc.id;
 			});
 			if (testBool) {
-				db.collection('email_list').doc(docId).update({ email: email, updated_on: new Date().toLocaleString("en-GB", { timeZone: "Asia/Kolkata" }) }).then(() => {
+				db.collection('email_list').doc(docId).update({ email: email, updated_on: db.FieldValue.serverTimestamp() }).then(() => {
 					console.log('Email updated!');
 					response.set({ 'Access-Control-Allow-Origin': '*' }).send(true);
 					return true;
@@ -27,7 +27,7 @@ exports.addEmail = functions.https.onRequest((request, response) => {
 				});
 			}
 			else {
-				db.collection('email_list').add({ email: email, created_on: new Date().toLocaleString("en-GB", { timeZone: "Asia/Kolkata" }) }).then((doc) => {
+				db.collection('email_list').add({ email: email, created_on: db.FieldValue.serverTimestamp() }).then((doc) => {
 					docId = doc.id;
 					console.log('Email created! doc.id = ' + docId);
 					response.set({ 'Access-Control-Allow-Origin': '*' }).send(true);
@@ -90,8 +90,7 @@ exports.getEmails = functions.https.onRequest((req, res) => {
 		querySnapshot.forEach((doc) => {
 			csv += '\n' + doc.data().email + ',' + doc.data().created_on.toDate();
 		});
-		res.setHeader('Content-disposition', 'attachment; filename=exporentals_emails_' + new Date().toLocaleString("en-GB", { timeZone: "Asia/Kolkata" })
-			+ '.csv');
+		res.setHeader('Content-disposition', 'attachment; filename=exporentals_emails_' + db.FieldValue.serverTimestamp() + '.csv');
 		res.set('Content-Type', 'text/csv');
 		res.set({ 'Access-Control-Allow-Origin': '*' }).status(200).send(csv);
 		res.end();
