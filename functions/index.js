@@ -11,7 +11,7 @@ const cors = require('cors')({ origin: true });
 
 exports.addEmail = functions.https.onRequest((request, response) => {
 	var email = request.query.email;
-	cors((request, response) => {
+	cors((req, res) => {
 		response.status(200).send(email);
 	});
 	return true;
