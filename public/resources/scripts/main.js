@@ -120,6 +120,9 @@ $(document).ready(function () {
 					M.Modal.getInstance(progressDialogModal).close();
 					Swal.fire('Perfect!', 'We\'ll keep you updated.', 'success');
 				}
+				else {
+					Swal.fire('Oops!', 'Something went wrong.', 'error');
+				}
 			});
 		});
 
