@@ -121,9 +121,13 @@ $(document).ready(function () {
 					Swal.fire('Perfect!', 'We\'ll keep you updated.', 'success');
 				}
 				else {
+					M.Modal.getInstance(progressDialogModal).close();
 					Swal.fire('Oops!', 'Something went wrong.', 'error');
 				}
-			});
+			}).fail(function () {
+				M.Modal.getInstance(progressDialogModal).close();
+				Swal.fire('Oops!', 'Something went wrong.', 'error');
+			});;
 		});
 
 	});
