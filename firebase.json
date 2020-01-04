@@ -15,6 +15,12 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "rewrites": [
+      {
+        "source": "/addEmail",
+        "function": "addEmail"
+      }
+    ],
     "headers": [
       {
         "source": "**",
