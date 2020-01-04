@@ -1,6 +1,5 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-const cors = require('cors')({ origin: true });
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -11,6 +10,6 @@ const cors = require('cors')({ origin: true });
 
 exports.addEmail = functions.https.onRequest((request, response) => {
 	var email = request.query.email;
-	res.set({ 'Access-Control-Allow-Origin': '*' }).send(email);
+	response.set({ 'Access-Control-Allow-Origin': '*' }).send(email);
 	return true;
 });
