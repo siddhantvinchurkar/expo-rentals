@@ -111,6 +111,18 @@ $(document).ready(function () {
 
 		}, 100);
 
+		/* Handle email submission */
+
+		$('#submit').click(function () {
+			M.Modal.getInstance(progressDialogModal).open();
+			$.get('https://expo-rentals.web.app/addEmail?email=' + email, function (data) {
+				if (data) {
+					M.Modal.getInstance(progressDialogModal).close();
+					Swal.fire('Perfect!', 'We\'ll keep you updated.', 'success');
+				}
+			});
+		});
+
 	});
 
 });
