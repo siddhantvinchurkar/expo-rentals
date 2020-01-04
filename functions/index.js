@@ -11,8 +11,6 @@ const cors = require('cors')({ origin: true });
 
 exports.addEmail = functions.https.onRequest((request, response) => {
 	var email = request.query.email;
-	cors((req, res) => {
-		res.status(200).send(email);
-	});
+	res.set({ 'Access-Control-Allow-Origin': '*' }).send(email);
 	return true;
 });
