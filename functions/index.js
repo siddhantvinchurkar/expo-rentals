@@ -12,7 +12,7 @@ const cors = require('cors')({ origin: true });
 exports.addEmail = functions.https.onRequest((request, response) => {
 	var email = request.query.email;
 	cors((req, res) => {
-		response.status(200).send(email);
+		res.status(200).send(email);
 	});
 	return true;
 });
