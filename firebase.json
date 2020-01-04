@@ -19,6 +19,10 @@
       {
         "source": "/addEmail",
         "function": "addEmail"
+      },
+      {
+        "source": "/getEmails",
+        "function": "getEmails"
       }
     ],
     "headers": [
