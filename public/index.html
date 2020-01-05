@@ -40,11 +40,21 @@
 
     <!-- What if some browser does not support javascript or has turned it off? -->
 
-    <noscript>Unfortunately, your browser does not support javascript. Either that or it's disabled. Maybe try to enable
-      it? Privacy centric browsers like Tor or Brave tend to do this more often than you think. Don't worry. We respect
-      your privacy and will never collect data from you without your explicit consent. If you want to know for
-      sure, head over to our <a href="https://privacy.aiwcbangalore.org/" target="_blank" rel="noreferrer"
-        title="Privacy Policy" alt="https://privacy.aiwcbangalore.org/">Privacy Policy</a>.</noscript>
+    <noscript>
+      <div>
+        Unfortunately, your browser does not support javascript. Either that or it's disabled. Maybe try to enable
+        it? Privacy centric browsers like Tor or Brave tend to do this more often than you think. Don't worry. We
+        respect
+        your privacy and will never collect data from you without your explicit consent. If you want to know for
+        sure, head over to our <a href="https://privacy.expo-rentals.web.app/" target="_blank" rel="noreferrer"
+          title="Privacy Policy" alt="https://privacy.expo-rentals.web.app/">Privacy Policy</a>.
+      </div>
+      <style>
+        .simplebar-content-wrapper {
+          overflow: auto;
+        }
+      </style>
+    </noscript>
 
     <!-- Navbar -->
 
@@ -75,8 +85,9 @@
             <a id="contact_us" class="roboto black-text">Contact Us</a>
           </li>
           <li style="background-color:#FFFFFF !important;">
-            <a id="sign_in_navbar" class="waves-effect waves-light btn blue darken-4 z-depth-5"><i
-                class="material-icons right">vpn_key</i><b>Sign in</b></a>
+            <a href="#signInDialogModal" id="sign_in_navbar"
+              class="waves-effect waves-light btn blue darken-4 z-depth-5 modal-trigger"><i
+                class="material-icons right">vpn_key</i><b>Sign in</b></a href="#signInDialogModal">
           </li>
         </ul>
       </div>
@@ -121,6 +132,98 @@
         </div>
       </div>
 
+      <!-- Sign In Dialog Modal -->
+
+      <div id="signInDialogModal" class="modal">
+        <div class="modal-content">
+          <div class="row">
+            <div class="col s12 m12 l8 xl8 offset-l2 offset-xl2">
+              <h3>Sign in</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m12 l8 xl8 offset-l2 offset-xl2 input-field">
+              <i class="material-icons prefix">phone</i>
+              <input placeholder="9785412548" data-length="10"
+                oninput="javascript: if (this.value.length >= this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                id="phone" type="number" min="6000000000" max="9999999999" maxlength="10" pattern="^\d{10}$"
+                class="validate" required>
+              <label for="phone">Phone Number *</label>
+              <span class="helper-text" data-error="Please enter a valid phone number" data-success="Perfect.">Please
+                enter a 10-digit phone number.</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="hide-on-med-and-down">
+              <div class="col s12 m12 l3 xl3 offset-l3 offset-xl3">
+                <a class="waves-effect waves-light btn-flat white modal-close" style="color: #990000;"><i
+                    class="material-icons right">cancel</i><b>Cancel</b></a>
+              </div>
+              <div class="col s12 m12 l3 xl3 offset-l1 offset-xl1">
+                <a id="sign_in_desktop" class="waves-effect waves-light btn blue darken-4"><i
+                    class="material-icons right white-text">vpn_key</i><b>Sign in</b></a>
+              </div>
+            </div>
+            <div class="hide-on-large-only">
+              <div class="col s9 m9 l3 xl3 offset-l3 offset-xl3">
+                <a class="waves-effect waves-light btn-flat white modal-close" style="color: #990000;"><i
+                    class="material-icons right">cancel</i>Cancel</a>
+              </div>
+              <div class="col s3 m3 l3 xl3 offset-l1 offset-xl1">
+                <a id="sign_in_mobile" class="waves-effect waves-light btn-floating blue darken-4"><i
+                    class="material-icons white-text">check_circle</i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OTP Dialog Modal -->
+
+      <div id="OTPDialogModal" class="modal">
+        <div class="modal-content">
+          <div class="row">
+            <div class="col s12 m12 l8 xl8 offset-l2 offset-xl2">
+              <h3>Enter OTP</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m12 l8 xl8 offset-l2 offset-xl2 input-field">
+              <i class="material-icons prefix">phone</i>
+              <input placeholder="978541" data-length="10"
+                oninput="javascript: if (this.value.length >= this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                id="otp" type="number" min="0" max="999999" maxlength="6" pattern="^\d{6}$" class="validate" required>
+              <label for="phone">One Time Password *</label>
+              <span class="helper-text" data-error="Please enter a valid phone number" data-success="Perfect.">Please
+                enter a 6-digit OTP.</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="hide-on-med-and-down">
+              <div class="col s12 m12 l3 xl3 offset-l3 offset-xl3">
+                <a id="OTPDialogModalCancelDesktop" class="waves-effect waves-light btn-flat white"
+                  style="color: #990000;"><i class="material-icons right">cancel</i><b>Cancel</b></a>
+              </div>
+              <div class="col s12 m12 l3 xl3 offset-l1 offset-xl1">
+                <a id="verifyOTPDesktop" class="waves-effect waves-light btn blue darken-4"><i
+                    class="material-icons right white-text">check_circle</i><b>Continue</b></a>
+              </div>
+            </div>
+            <div class="hide-on-large-only">
+              <div class="col s9 m9 l3 xl3 offset-l3 offset-xl3">
+                <a id="OTPDialogModalCancelMobile" class="waves-effect waves-light btn-flat white"
+                  style="color: #990000;"><i class="material-icons right">cancel</i>Cancel</a
+                  id="OTPDialogModalCancelMobile">
+              </div>
+              <div class="col s3 m3 l3 xl3 offset-l1 offset-xl1">
+                <a id="verifyOTPMobile" class="waves-effect waves-light btn-floating blue darken-4"><i
+                    class="material-icons white-text">check_circle</i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Parallax Image 1 -->
 
       <div class="parallax-container">
@@ -145,7 +248,8 @@
             <h1 id="s1h1">What's exporentals?</h1>
             <br />
             <p id="s1p1" style="font-size: 1.5em;">Exporentals is a B2B platform that connects furniture vendors with
-              event management firms. We make it possible to rent props and furniture for events on an hourly basis.</p>
+              event management firms. We make it possible to rent props and furniture for events on an hourly basis.
+            </p>
           </div>
         </div>
       </div>

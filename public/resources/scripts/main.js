@@ -9,6 +9,9 @@ $(document).ready(function () {
 	$('.sidenav').sidenav();
 	$('.parallax').parallax();
 	$('.modal#progressDialogModal').modal({ dismissible: false });
+	$('.modal#signInDialogModal').modal({ dismissible: true });
+	$('.modal#OTPDialogModal').modal({ dismissible: false });
+	$('input#phone').characterCounter();
 
 	M.Modal.getInstance(progressDialogModal).open();
 
@@ -128,6 +131,63 @@ $(document).ready(function () {
 				M.Modal.getInstance(progressDialogModal).close();
 				Swal.fire('Oops!', 'Something went wrong.', 'error');
 			});;
+		});
+
+		/* Handle sign_in_sidenav click on mobile devices */
+
+		$('#sign_in_sidenav').click(function () {
+			M.Sidenav.getInstance(sidenav).close();
+			M.Modal.getInstance(signInDialogModal).open();
+		});
+
+		/* Handle cancelled sign in attempt on desktops */
+
+		$('#OTPDialogModalCancelDesktop').click(function () {
+			M.Modal.getInstance(OTPDialogModal).close();
+
+			/* TODO: Record attempt */
+		});
+
+		/* Handle cancelled sign in attempt on mobile devices */
+
+		$('#OTPDialogModalCancelMobile').click(function () {
+			M.Modal.getInstance(OTPDialogModal).close();
+
+			/* TODO: Record attempt */
+		});
+
+		/* Handle sign in attempt on desktops */
+
+		$('#sign_in_desktop').click(function () {
+			M.Modal.getInstance(signInDialogModal).close();
+			M.Modal.getInstance(OTPDialogModal).open();
+
+			/* TODO: Record attempt */
+		});
+
+		/* Handle sign in attempt on mobile devices */
+
+		$('#sign_in_mobile').click(function () {
+			M.Modal.getInstance(signInDialogModal).close();
+			M.Modal.getInstance(OTPDialogModal).open();
+
+			/* TODO: Record attempt */
+		});
+
+		/* Handle verify OTP attempt on desktops */
+
+		$('#verifyOTPDesktop').click(function () {
+			M.Modal.getInstance(OTPDialogModal).close();
+
+			/* TODO: Record attempt */
+		});
+
+		/* Handle verify OTP attempt on mobile devices */
+
+		$('#verifyOTPMobile').click(function () {
+			M.Modal.getInstance(OTPDialogModal).close();
+
+			/* TODO: Record attempt */
 		});
 
 	});
