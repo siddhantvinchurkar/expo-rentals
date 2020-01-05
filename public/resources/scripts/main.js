@@ -180,12 +180,49 @@ $(document).ready(function () {
 			});;
 		});
 
+		/* Function to handle sign in attempt response */
+
+		function handleSignInAttemptResponse(data, stage) {
+			switch (stage) {
+				case 'otp_sent':
+					if (data) {
+						M.Modal.getInstance(progressDialogModal).close();
+						M.Modal.getInstance(OTPDialogModal).open();
+					}
+					else {
+						M.Modal.getInstance(progressDialogModal).close();
+						M.Modal.getInstance(signInDialogModal).close();
+						Swal.fire('Oops!', 'Something went wrong.', 'error');
+					}
+					break;
+				case 'otp_not_entered':
+					if (data) {
+						M.Modal.getInstance(progressDialogModal).close();
+						M.Modal.getInstance(OTPDialogModal).close();
+					}
+					else {
+						M.Modal.getInstance(progressDialogModal).close();
+						M.Modal.getInstance(OTPDialogModal).close();
+						Swal.fire('Oops!', 'Something went wrong.', 'error');
+
+					}
+					break;
+				default:
+					M.Modal.getInstance(progressDialogModal).close();
+					M.Modal.getInstance(OTPDialogModal).close();
+					Swal.fire('Oops!', 'Something went wrong.', 'error');
+					break;
+			}
+		}
+
 		/* Function to record sign in attempts */
 
 		function recordSignInAttempt(stage) {
 
 			$.get('https://expo-rentals.web.app/recordSignInAttempt?phone=' + phone + '&stage=' + stage, function (data) {
-				return data;
+				handleSignInAttemptResponse(data, stage);
+			}).fail(function () {
+				handleSignInAttemptResponse(false, stage);
 			});
 
 		}
@@ -202,16 +239,7 @@ $(document).ready(function () {
 		$('#OTPDialogModalCancelDesktop').click(function () {
 
 			M.Modal.getInstance(progressDialogModal).open();
-			if (recordSignInAttempt('otp_not_entered')) {
-				M.Modal.getInstance(progressDialogModal).close();
-				M.Modal.getInstance(OTPDialogModal).close();
-			}
-			else {
-				M.Modal.getInstance(progressDialogModal).close();
-				M.Modal.getInstance(OTPDialogModal).close();
-				Swal.fire('Oops!', 'Something went wrong.', 'error');
-
-			}
+			recordSignInAttempt('otp_not_entered');
 
 		});
 
@@ -220,15 +248,7 @@ $(document).ready(function () {
 		$('#OTPDialogModalCancelMobile').click(function () {
 
 			M.Modal.getInstance(progressDialogModal).open();
-			if (recordSignInAttempt('otp_not_entered')) {
-				M.Modal.getInstance(progressDialogModal).close();
-				M.Modal.getInstance(OTPDialogModal).close();
-			}
-			else {
-				M.Modal.getInstance(progressDialogModal).close();
-				M.Modal.getInstance(OTPDialogModal).close();
-				Swal.fire('Oops!', 'Something went wrong.', 'error');
-			}
+			recordSignInAttempt('otp_not_entered');
 
 		});
 
@@ -237,15 +257,7 @@ $(document).ready(function () {
 		$('#sign_in_desktop').click(function () {
 
 			M.Modal.getInstance(progressDialogModal).open();
-			if (recordSignInAttempt('otp_sent')) {
-				M.Modal.getInstance(progressDialogModal).close();
-				M.Modal.getInstance(OTPDialogModal).open();
-			}
-			else {
-				M.Modal.getInstance(progressDialogModal).close();
-				M.Modal.getInstance(signInDialogModal).close();
-				Swal.fire('Oops!', 'Something went wrong.', 'error');
-			}
+			recordSignInAttempt('otp_sent');
 
 		});
 
@@ -254,15 +266,7 @@ $(document).ready(function () {
 		$('#sign_in_mobile').click(function () {
 
 			M.Modal.getInstance(progressDialogModal).open();
-			if (recordSignInAttempt('otp_sent')) {
-				M.Modal.getInstance(progressDialogModal).close();
-				M.Modal.getInstance(OTPDialogModal).open();
-			}
-			else {
-				M.Modal.getInstance(progressDialogModal).close();
-				M.Modal.getInstance(signInDialogModal).close();
-				Swal.fire('Oops!', 'Something went wrong.', 'error');
-			}
+			recordSignInAttempt('otp_sent');
 
 		});
 
