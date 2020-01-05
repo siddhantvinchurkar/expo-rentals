@@ -12,6 +12,7 @@ $(document).ready(function () {
 	$('.modal#signInDialogModal').modal({ dismissible: true });
 	$('.modal#OTPDialogModal').modal({ dismissible: false });
 	$('input#phone').characterCounter();
+	$('input#otp').characterCounter();
 
 	M.Modal.getInstance(progressDialogModal).open();
 
@@ -100,6 +101,8 @@ $(document).ready(function () {
 
 		/* Form Monitors */
 
+		/* Email Monitor */
+
 		var email = null;
 		var emailMonitor = setInterval(function () {
 
@@ -111,6 +114,50 @@ $(document).ready(function () {
 
 			if (email.match('[a-z0-9._%+-]+@+[a-z]+\.+[a-z]') !== null) $('#submit').removeClass('disabled');
 			else $('#submit').addClass('disabled');
+
+		}, 100);
+
+		/* Phone Monitor */
+
+		var phone = null;
+		var phoneMonitor = setInterval(function () {
+
+			/* Collect Value */
+
+			phone = $('#phone').val();
+
+			/* Validate value */
+
+			if (phone.length == 10) {
+				$('#sign_in_desktop').removeClass('disabled');
+				$('#sign_in_mobile').removeClass('disabled');
+			}
+			else {
+				$('#sign_in_desktop').addClass('disabled');
+				$('#sign_in_mobile').addClass('disabled');
+			}
+
+		}, 100);
+
+		/* OTP Monitor */
+
+		var otp = null;
+		var otpMonitor = setInterval(function () {
+
+			/* Collect Value */
+
+			otp = $('#otp').val();
+
+			/* Validate value */
+
+			if (otp.length == 6) {
+				$('#verifyOTPDesktop').removeClass('disabled');
+				$('#verifyOTPMobile').removeClass('disabled');
+			}
+			else {
+				$('#verifyOTPDesktop').addClass('disabled');
+				$('#verifyOTPMobile').addClass('disabled');
+			}
 
 		}, 100);
 
@@ -133,6 +180,16 @@ $(document).ready(function () {
 			});;
 		});
 
+		/* Function to record sign in attempts */
+
+		function recordSignInAttempt(stage) {
+
+			$.get('https://expo-rentals.web.app/recordSignInAttempt?phone=' + phone + '&stage=' + stage, function (data) {
+				return data;
+			});
+
+		}
+
 		/* Handle sign_in_sidenav click on mobile devices */
 
 		$('#sign_in_sidenav').click(function () {
@@ -143,35 +200,70 @@ $(document).ready(function () {
 		/* Handle cancelled sign in attempt on desktops */
 
 		$('#OTPDialogModalCancelDesktop').click(function () {
-			M.Modal.getInstance(OTPDialogModal).close();
 
-			/* TODO: Record attempt */
+			M.Modal.getInstance(progressDialogModal).open();
+			if (recordSignInAttempt('otp_not_entered')) {
+				M.Modal.getInstance(progressDialogModal).close();
+				M.Modal.getInstance(OTPDialogModal).close();
+			}
+			else {
+				M.Modal.getInstance(progressDialogModal).close();
+				M.Modal.getInstance(OTPDialogModal).close();
+				Swal.fire('Oops!', 'Something went wrong.', 'error');
+
+			}
+
 		});
 
 		/* Handle cancelled sign in attempt on mobile devices */
 
 		$('#OTPDialogModalCancelMobile').click(function () {
-			M.Modal.getInstance(OTPDialogModal).close();
 
-			/* TODO: Record attempt */
+			M.Modal.getInstance(progressDialogModal).open();
+			if (recordSignInAttempt('otp_not_entered')) {
+				M.Modal.getInstance(progressDialogModal).close();
+				M.Modal.getInstance(OTPDialogModal).close();
+			}
+			else {
+				M.Modal.getInstance(progressDialogModal).close();
+				M.Modal.getInstance(OTPDialogModal).close();
+				Swal.fire('Oops!', 'Something went wrong.', 'error');
+			}
+
 		});
 
 		/* Handle sign in attempt on desktops */
 
 		$('#sign_in_desktop').click(function () {
-			M.Modal.getInstance(signInDialogModal).close();
-			M.Modal.getInstance(OTPDialogModal).open();
 
-			/* TODO: Record attempt */
+			M.Modal.getInstance(progressDialogModal).open();
+			if (recordSignInAttempt('otp_sent')) {
+				M.Modal.getInstance(progressDialogModal).close();
+				M.Modal.getInstance(OTPDialogModal).open();
+			}
+			else {
+				M.Modal.getInstance(progressDialogModal).close();
+				M.Modal.getInstance(signInDialogModal).close();
+				Swal.fire('Oops!', 'Something went wrong.', 'error');
+			}
+
 		});
 
 		/* Handle sign in attempt on mobile devices */
 
 		$('#sign_in_mobile').click(function () {
-			M.Modal.getInstance(signInDialogModal).close();
-			M.Modal.getInstance(OTPDialogModal).open();
 
-			/* TODO: Record attempt */
+			M.Modal.getInstance(progressDialogModal).open();
+			if (recordSignInAttempt('otp_sent')) {
+				M.Modal.getInstance(progressDialogModal).close();
+				M.Modal.getInstance(OTPDialogModal).open();
+			}
+			else {
+				M.Modal.getInstance(progressDialogModal).close();
+				M.Modal.getInstance(signInDialogModal).close();
+				Swal.fire('Oops!', 'Something went wrong.', 'error');
+			}
+
 		});
 
 		/* Handle verify OTP attempt on desktops */

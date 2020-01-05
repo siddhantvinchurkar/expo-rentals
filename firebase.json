@@ -23,6 +23,10 @@
       {
         "source": "/getEmails",
         "function": "getEmails"
+      },
+      {
+        "source": "/recordSignInAttempt",
+        "function": "recordSignInAttempt"
       }
     ],
     "headers": [
