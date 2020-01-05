@@ -107,7 +107,7 @@ exports.recordSignInAttempt = functions.https.onRequest((request, response) => {
 	var phone = request.query.phone;
 	var stage = request.query.stage;
 	var docId = 'null';
-	if (phone.length == 10) {
+	if (phone.length === 10) {
 		db.collection('sign_in_attempts').add({ phone: phone, created_on: new Date(), stage: stage }).then((doc) => {
 			docId = doc.id;
 			console.log('Sign in attempt created! doc.id = ' + docId);
