@@ -127,6 +127,7 @@ exports.recordSignInAttempt = functions.https.onRequest((request, response) => {
 							return false;
 						});
 					});
+					return true;
 				}).catch((error) => {
 					console.error(error);
 					response.set({ 'Access-Control-Allow-Origin': '*' }).send(false);
@@ -152,6 +153,7 @@ exports.recordSignInAttempt = functions.https.onRequest((request, response) => {
 					return false;
 				});
 			}
+			return true;
 		}).catch((error) => {
 			console.error(error);
 			response.set({ 'Access-Control-Allow-Origin': '*' }).send(false);
