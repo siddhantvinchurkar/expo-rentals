@@ -115,8 +115,8 @@ exports.recordSignInAttempt = functions.https.onRequest((request, response) => {
 				existBool = true;
 			});
 			if (existBool) {
-				console.log('heerrrreeee!!!');
 				db.collection('phone_numbers').doc(docId).collection('sign_in_attempts').where('timestamp', '>=', new Date().getTime() - 60000).get().then((qs) => {
+					console.log('heerrrreeee!!!');
 					qs.forEach((doc) => {
 						db.collection('phone_numbers').doc(docId).collection('sign_in_attempts').doc(doc.id).update().then(() => {
 							console.log('Sign in attempt created! doc.id = ' + docId);
