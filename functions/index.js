@@ -108,10 +108,17 @@ exports.recordSignInAttempt = functions.https.onRequest((request, response) => {
 	var stage = request.query.stage;
 	var docId = 'null';
 	if (phone.length === 10) {
-		db.collection('sign_in_attempts').add({ phone: phone, created_on: new Date(), stage: stage }).then((doc) => {
+		db.collection('phone_numbers').add({ phone: phone }).then((doc) => {
 			docId = doc.id;
-			console.log('Sign in attempt created! doc.id = ' + docId);
-			response.set({ 'Access-Control-Allow-Origin': '*' }).send(true);
+			db.collection('phone_numbers').doc(doc.id).collection('sign_in_attemts').add({ timestamp: new Date(), stage: stage }).then((doc) => {
+				console.log('Sign in attempt created! doc.id = ' + docId);
+				response.set({ 'Access-Control-Allow-Origin': '*' }).send(true);
+				return true;
+			}).catch((error) => {
+				console.error('Invalid phone number provided!');
+				response.set({ 'Access-Control-Allow-Origin': '*' }).send(false);
+				return false;
+			});
 			return true;
 		}).catch((error) => {
 			console.error(error);
