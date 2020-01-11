@@ -107,19 +107,51 @@ exports.recordSignInAttempt = functions.https.onRequest((request, response) => {
 	var phone = request.query.phone;
 	var stage = request.query.stage;
 	var docId = 'null';
+	var existBool = false;
 	if (phone.length === 10) {
-		db.collection('phone_numbers').add({ phone: phone }).then((doc) => {
-			docId = doc.id;
-			db.collection('phone_numbers').doc(doc.id).collection('sign_in_attemts').add({ timestamp: new Date(), stage: stage }).then((doc) => {
-				console.log('Sign in attempt created! doc.id = ' + docId);
-				response.set({ 'Access-Control-Allow-Origin': '*' }).send(true);
-				return true;
-			}).catch((error) => {
-				console.error('Invalid phone number provided!');
-				response.set({ 'Access-Control-Allow-Origin': '*' }).send(false);
-				return false;
+		db.collection('phone_numbers').where('phone', '==', phone).get().then((querySnapshot) => {
+			querySnapshot.forEach((doc) => {
+				docId = doc.id;
+				existBool = true;
 			});
-			return true;
+			if (existBool) {
+				db.collection('phone_numbers').doc(docId).collection('sign_in_attempts').where('timestamp', '>=', new Date().getTime() - 60000).get().then((qs) => {
+					qs.forEach((doc) => {
+						db.collection('phone_numbers').doc(docId).collection('sign_in_attempts').doc(doc.id).update().then(() => {
+							console.log('Sign in attempt created! doc.id = ' + docId);
+							response.set({ 'Access-Control-Allow-Origin': '*' }).send(true);
+							return true;
+						}).catch((error) => {
+							console.error(error);
+							response.set({ 'Access-Control-Allow-Origin': '*' }).send(false);
+							return false;
+						});
+					});
+				}).catch((error) => {
+					console.error(error);
+					response.set({ 'Access-Control-Allow-Origin': '*' }).send(false);
+					return false;
+				});
+			}
+			else {
+				db.collection('phone_numbers').add({ phone: phone }).then((doc) => {
+					docId = doc.id;
+					db.collection('phone_numbers').doc(doc.id).collection('sign_in_attemts').add({ timestamp: new Date(), stage: stage }).then((doc) => {
+						console.log('Sign in attempt created! doc.id = ' + docId);
+						response.set({ 'Access-Control-Allow-Origin': '*' }).send(true);
+						return true;
+					}).catch((error) => {
+						console.error('Invalid phone number provided!');
+						response.set({ 'Access-Control-Allow-Origin': '*' }).send(false);
+						return false;
+					});
+					return true;
+				}).catch((error) => {
+					console.error(error);
+					response.set({ 'Access-Control-Allow-Origin': '*' }).send(false);
+					return false;
+				});
+			}
 		}).catch((error) => {
 			console.error(error);
 			response.set({ 'Access-Control-Allow-Origin': '*' }).send(false);
